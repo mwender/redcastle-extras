@@ -4,7 +4,7 @@ Tags: enhancers, elementor, shortcodes
 Requires at least: 4.5
 Tested up to: 5.9
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,7 +59,7 @@ Display a calendar of upcoming classes.
 
 ```
 /**
- * Display a calander of classes
+ * Display a calender of classes
  *
  * @param      array  $atts {
  *   @type  bool   $remove_title TRUE removes the course title from the class title.
@@ -71,7 +71,27 @@ Display a calendar of upcoming classes.
  */
 ```
 
+= `get_course_title` Shortcode =
+
+Retrieve the title of a course with `[get_course_title post_id="" /]`.
+
+```
+/**
+ * Gets the course title.
+ *
+ * @param      array  $atts {
+ *   @type  int  $post_id  The Course ID.
+ *   @type  int  $class_id The Class ID.
+ * }
+ *
+ * @return     string  The course title.
+ */
+```
+
 == Changelog ==
+
+= 1.2.0 =
+* Adding `[get_course_title]` shortcode.
 
 = 1.1.0 =
 * Querying `[class_calendar]` classes by `start_date`.

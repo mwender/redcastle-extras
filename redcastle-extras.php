@@ -7,7 +7,7 @@
  * Author URI:      https://mwender.com
  * Text Domain:     redcastle-extras
  * Domain Path:     /languages
- * Version:         1.1.0
+ * Version:         1.2.0
  *
  * @package         Redcastle_Extras
  */
@@ -34,6 +34,7 @@ if( file_exists( REDCASTLE_PLUGIN_PATH . 'vendor/autoload.php' ) ){
 require_once( REDCASTLE_PLUGIN_PATH . 'lib/fns/acf.php' );
 require_once( REDCASTLE_PLUGIN_PATH . 'lib/fns/acf-json-save-point.php' );
 require_once( REDCASTLE_PLUGIN_PATH . 'lib/fns/classes.php' );
+require_once( REDCASTLE_PLUGIN_PATH . 'lib/fns/courses.php' );
 
 /**
  * Enhanced logging.
