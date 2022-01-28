@@ -7,7 +7,7 @@
  * Author URI:      https://mwender.com
  * Text Domain:     redcastle-extras
  * Domain Path:     /languages
- * Version:         1.0.0
+ * Version:         1.0.1
  *
  * @package         Redcastle_Extras
  */
@@ -22,11 +22,11 @@ define( 'REDCASTLE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 // Load Composer dependencies
 if( file_exists( REDCASTLE_PLUGIN_PATH . 'vendor/autoload.php' ) ){
   require_once REDCASTLE_PLUGIN_PATH . 'vendor/autoload.php';
-} else {
+} else if( file_exists( REDCASTLE_PLUGIN_PATH . 'composer.json' ) ) {
   add_action( 'admin_notices', function(){
     $class = 'notice notice-error';
-    $message = __( 'Missing required Composer libraries. Please run `composer install` from the root directory of this plugin.', 'redcastle-extras' );
-    printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
+    $message = __( '<strong>Missing Composer Files:</strong> Missing required Composer libraries. Please run <code>composer install</code> from the root directory of this plugin.', 'redcastle-extras' );
+    printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
   } );
 }
 
