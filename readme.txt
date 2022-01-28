@@ -14,11 +14,11 @@ Enhancers for the Red Castle website.
 
 The plugin adds various enhancements to the Red Castle website.
 
-=== Shortcodes ===
+== Shortcodes ==
 
 Various custom shortcodes:
 
-==== `acf_date` Shortcode ====
+= `acf_date` Shortcode =
 
 Display ACF Date fields with `[acf_date/]`.
 
@@ -37,7 +37,7 @@ Display ACF Date fields with `[acf_date/]`.
  */
 ```
 
-==== `acf_classtime` Shortcode ====
+= `acf_classtime` Shortcode =
 
 Display the class times for a class.
 
@@ -53,7 +53,7 @@ Display the class times for a class.
  */
 ```
 
-==== `class_calendar` Shortcode ====
+= `class_calendar` Shortcode =
 
 Display a calendar of upcoming classes.
 
