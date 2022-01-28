@@ -50,7 +50,7 @@ add_filter('acf/update_value/name=end_time', __NAMESPACE__ . '\\update_postdata'
 add_filter('acf/update_value/name=course', __NAMESPACE__ . '\\update_postdata', 10, 3);
 
 /**
- * Display a calander of classes
+ * Display a calender of classes
  *
  * @param      array  $atts {
  *   @type  bool   $remove_title TRUE removes the course title from the class title.
