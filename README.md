@@ -64,6 +64,7 @@ Display a calendar of upcoming classes.
  * @param      array  $atts {
  *   @type  bool   $remove_title TRUE removes the course title from the class title.
  *   @type  string $date_format  The PHP date format for the class date.
+ *   @type  string $title_format Specify the format of a class's title. Current options are "fulltitle", "dateonly", or empty for the default.
  * }
  *
  * @return     string  The HTML for the calendar of classes.
@@ -71,6 +72,10 @@ Display a calendar of upcoming classes.
 ```
 
 ## Changelog ##
+
+### 1.1.0 ###
+* Querying `[class_calendar]` classes by `start_date`.
+* Adding `title_format` attribute option to `[class_calendar]`,
 
 ### 1.0.1 ###
 * Checking for `composer.json` before adding Composer warning.

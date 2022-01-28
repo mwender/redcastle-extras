@@ -55,6 +55,7 @@ add_filter('acf/update_value/name=course', __NAMESPACE__ . '\\update_postdata', 
  * @param      array  $atts {
  *   @type  bool   $remove_title TRUE removes the course title from the class title.
  *   @type  string $date_format  The PHP date format for the class date.
+ *   @type  string $title_format Specify the format of a class's title. Current options are "fulltitle", "dateonly", or empty for the default.
  * }
  *
  * @return     string  The HTML for the calendar of classes.
@@ -62,15 +63,26 @@ add_filter('acf/update_value/name=course', __NAMESPACE__ . '\\update_postdata', 
 function class_calendar( $atts ){
   $args = shortcode_atts([
     'remove_title' => true,
-    'date_format' => 'F j, Y',
+    'date_format'  => 'F j, Y',
+    'title_format' => null,
   ], $atts );
 
    if ( $args['remove_title'] === 'false' ) $args['remove_title'] = false; // just to be sure...
   $args['remove_title'] = (bool) $args['remove_title'];
 
+  $date_now = date( 'Y-m-d H:i:s' );
+
   $query_args = [
-    'post_type' => 'class',
-    'order'     => 'ASC',
+    'post_type'   => 'class',
+    'order'       => 'ASC',
+    'meta_query'  => [
+      [
+        'key' => 'start_date',
+        'compare' => '>=',
+        'value'   => $date_now,
+        'type'    => 'DATE',
+      ],
+    ],
   ];
   $classes = new \WP_Query( $query_args );
   if( $classes ){
@@ -95,11 +107,20 @@ function class_calendar( $atts ){
         $start_time = str_replace( ' pm', '', $start_time );
       }
 
-      if( $args['remove_title'] ){
-        $html[] = '<li>' . $start_date_object->format( $args['date_format'] ) . ' <span>('. $start_time .' - ' . $end_time . ')</span></li>';
-      } else {
-        $html[] = '<li>' . get_the_title() . '</li>';
+      switch ( $args['title_format'] ) {
+        case 'fulltitle':
+          $class_title = get_the_title();
+          break;
+
+        case 'dateonly':
+          $class_title = $start_date_object->format( $args['date_format'] );
+          break;
+
+        default:
+          $class_title = $start_date_object->format( $args['date_format'] ) . ' <span>('. $start_time .' - ' . $end_time . ')</span>';
+          break;
       }
+      $html[] = '<li>' . $class_title . '</li>';
 
     endwhile;
 
