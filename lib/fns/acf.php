@@ -23,11 +23,9 @@ function acf_date_shortcode( $atts ){
   ), $atts );
 
   $acf_date = get_field( $args['field'], $args['post_id'], $args['format_value'] );
-  uber_log('🔔 $acf_date = ' . $acf_date );
   $date = \DateTime::createFromFormat( 'm/d/Y', $acf_date );
 
   $value = $date->format( $args['date_format'] );
-  uber_log('🔔 $date_format = ' . $args['date_format'] . "\n" . '🔔 $value = ' . $value );
 
   return $value;
 }
