@@ -4,7 +4,7 @@ Tags: enhancers, elementor, shortcodes
 Requires at least: 4.5
 Tested up to: 5.9
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,7 +88,30 @@ Retrieve the title of a course with `[get_course_title post_id="" /]`.
  */
 ```
 
+= `get_course_title` Shortcode =
+
+Return information about a Course's next upcoming session via `[next_session_start/]`.
+
+```
+/**
+ * Returns content related to the next session of a course.
+ *
+ * @param      array  $atts {
+ *   @type  int     $post_id       The Post ID of the Course.
+ *   @type  string  $date_format   The format of the date to be returned. Default `l, F j, Y`.
+ *   @type  string  $field         The name of the ACF field we are returning. Default `start_date`.
+ *   @type  bool    $format_value  Whether or not to format the date value when calling `get_field()`. Default `true`.
+ *   @type  string  $return_content  The content we're returning (i.e. "link" or "date"). Default "date".
+ * }
+ *
+ * @return     string  Session start string.
+ */
+```
+
 == Changelog ==
+
+= 1.3.0 =
+* Adding `[next_session_start]` shortcode for displaying information about a Course's next upcoming session.
 
 = 1.2.0 =
 * Adding `[get_course_title]` shortcode.
